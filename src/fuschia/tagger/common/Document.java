@@ -42,5 +42,13 @@ public class Document implements Serializable {
 			return -1;
 		return tokens.length;
 	}
+	
+	public String getText() {
+		String result = "";
+		for (int i = 0; i < tokens.length; i++) {
+			result += tokens[i] + " ";
+		}
+		return result.trim();
+	}
 
 }
