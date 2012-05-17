@@ -30,25 +30,14 @@ public class RepositoryCreator extends Thread {
 	public static void main(String[] args) {
 		
 		try {
-			//TODO: start tagger thread and wait for completion
-			TaggerThread tagger = new TaggerThread("/Volumes/Personal HD/Friends/Salar/");
-			tagger.start();
-			while(tagger.isAlive());
+			RepositoryCreator creator = new RepositoryCreator("/Volumes/Personal HD/Friends/Salar/");
+			creator.results.saveToFile("/Users/morteza/911.cmap.gz");
+			creator.start();
 			
-			if (tagger != null && tagger.results != null) {
-				String strSelectedFile = "/Users/morteza/911.cmap.gz";
-
-				// start saving generated map file
-				tagger.results.saveToFile(strSelectedFile);
-
-			}
+			while(creator.isAlive());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		RepositoryCreator construal = new RepositoryCreator("/Volumes/Personal HD/Friends/Salar/");
-		construal.start();
-		while(construal.isAlive());
 	}
 
 	public RepositoryCreator(String strWorkingDirectory) {
@@ -160,9 +149,15 @@ public class RepositoryCreator extends Thread {
 								}
 							}							
 						}
+						
+						// Create and add appropriate document object
+						String documentId = ((surveyId==0)?".":"s."+String.valueOf(surveyId))
+								+ file.getName().substring(0,file.getName().length() - 4);
+						results.addDocument(documentId, new Document(file.getName(), tokens, tags));
+
 					}
 
-					System.out.println("Writing CSV output");
+					System.out.println("Writing Construal CSV output...");
 					
 					BufferedWriter fVerbs = new BufferedWriter(new FileWriter(new File("/Users/morteza/verbs.csv")));
 					BufferedWriter fAdjectives = new BufferedWriter(new FileWriter(new File("/Users/morteza/adjectives.csv")));
