@@ -31,10 +31,11 @@ public class RepositoryCreator extends Thread {
 		
 		try {
 			RepositoryCreator creator = new RepositoryCreator("/Volumes/Personal HD/Friends/Salar/");
-			creator.results.saveToFile("/Users/morteza/911.cmap.gz");
 			creator.start();
-			
 			while(creator.isAlive());
+			
+			creator.results.saveToFile("/Users/morteza/911.cmap.gz");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
