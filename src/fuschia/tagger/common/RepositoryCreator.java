@@ -152,7 +152,7 @@ public class RepositoryCreator extends Thread {
 						}
 						
 						// Create and add appropriate document object
-						String documentId = ((surveyId==0)?".":"s."+String.valueOf(surveyId))
+						String documentId = ((surveyId==0)?".":"s"+String.valueOf(surveyId)+".")
 								+ file.getName().substring(0,file.getName().length() - 4);
 						results.addDocument(documentId, new Document(file.getName(), tokens, tags));
 
