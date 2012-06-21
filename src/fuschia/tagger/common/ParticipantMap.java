@@ -57,7 +57,8 @@ public class ParticipantMap{
     	if (key.toUpperCase().charAt(key.length()-1) == 'B') {
     		return key;
     	} else if (key.toUpperCase().charAt(key.length()-1) == 'C') {
-    		return s1s3Map.get(key);
+    		String tempKey = s1s3Map.get(key); //get S1
+    		return s1s2Map.get(tempKey);
     	}
 
     	// key is in S1 format
@@ -69,7 +70,7 @@ public class ParticipantMap{
     			return null;
     	
     	if (key.toUpperCase().charAt(key.length()-1) == 'B') {
-    		String tempKey = s1s2Map.get(key);
+    		String tempKey = s1s2Map.get(key); //get S1
     		return s1s3Map.get(tempKey);
     	} else if (key.toUpperCase().charAt(key.length()-1) == 'C') {
     		return key;
