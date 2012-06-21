@@ -69,7 +69,8 @@ public class ParticipantMap{
     			return null;
     	
     	if (key.toUpperCase().charAt(key.length()-1) == 'B') {
-    		return s1s2Map.get(key);
+    		String tempKey = s1s2Map.get(key);
+    		return s1s3Map.get(tempKey);
     	} else if (key.toUpperCase().charAt(key.length()-1) == 'C') {
     		return key;
     	}
