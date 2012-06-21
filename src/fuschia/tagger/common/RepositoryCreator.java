@@ -25,12 +25,17 @@ import fuschia.tagger.common.DocumentRepository;
 public class RepositoryCreator extends Thread {
 
 	private String strWorkingDirectory;
+	/**
+	 * Mapping CSV file path
+	 */
+	private String strMappingFilePath;
 	public DocumentRepository results;
 
 	public static void main(String[] args) {
 		
 		try {
-			RepositoryCreator creator = new RepositoryCreator("/Volumes/Personal HD/Friends/Salar/");
+			//TODO: update csv file path
+			RepositoryCreator creator = new RepositoryCreator("/Volumes/Personal HD/Friends/Salar/","");
 			creator.start();
 			while(creator.isAlive());
 			
@@ -41,9 +46,10 @@ public class RepositoryCreator extends Thread {
 		}
 	}
 
-	public RepositoryCreator(String strWorkingDirectory) {
+	public RepositoryCreator(String strWorkingDirectory, String strMappingFilePath) {
 		super();
 		this.strWorkingDirectory = new String(strWorkingDirectory);
+		this.strMappingFilePath = strMappingFilePath;
 		results = null;
 	}
 
