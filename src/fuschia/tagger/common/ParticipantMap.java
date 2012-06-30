@@ -21,11 +21,22 @@ public class ParticipantMap{
         s1s2Map.put(keyS1, keyS2);
         s1s2Map.put(keyS2, keyS1);
         s1s3Map.put(keyS1, keyS3);
-        s1s3Map.put(keyS3, keyS1);  
+        s1s3Map.put(keyS3, keyS1);
         // s2s3Map.put(keyS2, keyS3);
         // s2s3Map.put(keyS3, keyS2);     
     }
 
+    /**
+     * Returns random key from survey#1 for LCM surveying purpose
+     * TODO: fix this dump impl and speed it up!
+     * @return
+     */
+    public String getRandomS1Key() {
+    	int index = (int)(Math.random()*s1s2Map.size());
+    	String s1Key = s1s2Map.keySet().toArray(new String[0])[index];
+    	return s1Key;
+    }
+    
     public boolean containsKey(String key){
     	boolean result = s1s2Map.containsKey(key) | s1s3Map.containsKey(key) /*| s2s3Map.containsKey(key)*/;
         return result;
