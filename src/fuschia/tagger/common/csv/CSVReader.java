@@ -1318,8 +1318,7 @@ public class CSVReader {
 				int lastLetter = columnBuffer.Position - 1;
 
 				if (userSettings.TrimWhitespace && !startedWithQualifier) {
-					while (lastLetter >= 0
-							&& (columnBuffer.Buffer[lastLetter] == Letters.SPACE || columnBuffer.Buffer[lastLetter] == Letters.SPACE)) {
+					while (lastLetter >= 0 && columnBuffer.Buffer[lastLetter] == Letters.SPACE) {
 						lastLetter--;
 					}
 				}
