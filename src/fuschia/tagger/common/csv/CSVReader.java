@@ -1750,12 +1750,12 @@ public class CSVReader {
 
 		public int Length;
 
-		public HashMap IndexByName;
+		public HashMap<String, Integer> IndexByName;
 
 		public HeadersHolder() {
 			Headers = null;
 			Length = 0;
-			IndexByName = new HashMap();
+			IndexByName = new HashMap<String, Integer>();
 		}
 	}
 

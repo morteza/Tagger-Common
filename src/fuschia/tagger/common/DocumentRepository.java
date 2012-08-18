@@ -1,7 +1,6 @@
 package fuschia.tagger.common;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -112,8 +111,11 @@ public class DocumentRepository {
 		if (obj instanceof HashMap<?, ?>) {
 			docs = (HashMap<String, Document>)obj;
 		} else {
+			oisCompressed.close();
 			throw new Exception("Invalid object format");
 		}
+		
+		oisCompressed.close();
 	}
 
 	public void clear() {

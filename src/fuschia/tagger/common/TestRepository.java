@@ -3,7 +3,6 @@ package fuschia.tagger.common;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.nio.charset.Charset;
 
 import fuschia.tagger.common.csv.CSVReader;

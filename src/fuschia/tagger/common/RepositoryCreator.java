@@ -131,7 +131,7 @@ public class RepositoryCreator extends Thread {
 						else
 							surveyId = 0;
 
-						String txt = new String();
+						String txt = "";
 						while (lineScanner.hasNextLine()) {
 							txt = txt + lineScanner.nextLine();
 						}
