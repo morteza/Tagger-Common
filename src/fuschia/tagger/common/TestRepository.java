@@ -47,6 +47,8 @@ public class TestRepository {
 				String s3qId = keyS3 + "-Q41";
 				
 				String pLine = keyS1 + ",";
+				pLine 		+= keyS2 + ",";
+				pLine 		+= keyS3 + ",";				
 				
 				System.out.println(s1qId);
 				Document doc1 = repo.getDocumentById(s1qId);	
@@ -56,6 +58,7 @@ public class TestRepository {
 				if (doc1!=null && doc2!=null && doc3!=null ) {
 					
 					int adjCount = 0;
+					int verbCount = 0;
 					for (int i = 0 ; i<doc1.size(); i++) {
 						if (doc1.tags[i].startsWith("JJ")
 								|| doc1.tags[i].startsWith("RB")
@@ -63,9 +66,17 @@ public class TestRepository {
 							adjCount++;
 						}
 					}
-					pLine += String.valueOf(adjCount) + "," + String.valueOf(doc1.size()) + ",";
+					
+					for (int i = 0 ; i<doc1.size(); i++) {
+						if (doc1.tags[i].startsWith("VB")){
+							verbCount++;
+						}
+					}
+					
+					pLine += String.valueOf(adjCount) + "," + String.valueOf(verbCount) + "," + String.valueOf(doc1.size()) + ",";
 
 					adjCount = 0;
+					verbCount = 0;
 					for (int i = 0 ; i<doc2.size(); i++) {
 						if (doc2.tags[i].startsWith("JJ")
 								|| doc2.tags[i].startsWith("RB")
@@ -73,9 +84,16 @@ public class TestRepository {
 							adjCount++;
 						}
 					}
-					pLine += String.valueOf(adjCount) + "," + String.valueOf(doc2.size()) + ",";
+					for (int i = 0 ; i<doc2.size(); i++) {
+						if (doc2.tags[i].startsWith("VB")){
+							verbCount++;
+						}
+					}
+					
+					pLine += String.valueOf(adjCount) + "," + String.valueOf(verbCount) + "," + String.valueOf(doc2.size()) + ",";
 
 					adjCount = 0;
+					verbCount = 0;
 					for (int i = 0 ; i<doc3.size(); i++) {
 						if (doc3.tags[i].startsWith("JJ")
 								|| doc3.tags[i].startsWith("RB")
@@ -83,7 +101,13 @@ public class TestRepository {
 							adjCount++;
 						}
 					}
-					pLine += String.valueOf(adjCount) + "," + String.valueOf(doc3.size());
+					for (int i = 0 ; i<doc3.size(); i++) {
+						if (doc3.tags[i].startsWith("VB")){
+							verbCount++;
+						}
+					}
+					
+					pLine += String.valueOf(adjCount) + "," + String.valueOf(verbCount) + "," + String.valueOf(doc3.size());
 					
 					fAdjectives.write(pLine);
 					fAdjectives.newLine();					
